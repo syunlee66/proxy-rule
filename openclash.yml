@@ -9,11 +9,14 @@ profile:
   store-selected: false
   tracing: false
   store-fake-ip: false
+sniffer:
+  enable: true
+  force-dns-mapping: true
 dns:
   enable: true
   ipv6: false
   listen: 0.0.0.0:1053
-  enhanced-mode: fake-ip
+  enhanced-mode: redir-host
   fake-ip-range: 198.18.0.1/16
   use-hosts: true
   default-nameserver:
@@ -23,6 +26,7 @@ dns:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
   fake-ip-filter:
+    - +.office.com
     - '*.lan'
     - '*.localdomain'
     - '*.example'
@@ -114,6 +118,15 @@ dns:
     - '*.finalfantasyxiv.com'
     - '*.ffxiv.com'
     - '*.mcdn.bilivideo.cn'
+    - "*.huixiaoer.com"
+    - "*.syunlee.com"
+    - "*.qunxiner.net"
+    - "*.tingxiner.net"
+    - "*.huixiaoer.net"
+    - huixiaoer.com
+    - tingxiner.net
+    - qunxiner.net
+    - huixiaoer.net
   fallback:
     - 1.1.1.1
     - 8.8.8.8
@@ -146,7 +159,25 @@ proxy-providers:
   provider1:
     type: http
     path: ./proxy-provider/provider1.yaml
-    url: "xxxxxxxxxxx"
+    url: ""
+    interval: 86400
+    health-check:
+      enable: true
+      url: http://cp.cloudflare.com/generate_204
+      interval: 86400
+  provider2:
+    type: http
+    path: ./proxy-provider/provider2.yaml
+    url: ""
+    interval: 86400
+    health-check:
+      enable: true
+      url: http://cp.cloudflare.com/generate_204
+      interval: 86400
+  provider3:
+    type: http
+    path: ./proxy-provider/provider3.yaml
+    url: ""
     interval: 86400
     health-check:
       enable: true
@@ -163,6 +194,11 @@ proxy-groups:
       - 🇨🇳 Taiwan
       - 🇩🇪 Germany
       - 🇬🇧 Great Britain
+      - 🇦🇺 Australia
+      - 🇨🇦 Canada
+      - 🇫🇷 French
+      - 🇷🇺 Russia
+      - 🇰🇷 South Korea
   - name: "Apple-News"
     type: select
     proxies:
@@ -174,6 +210,11 @@ proxy-groups:
       - 🇨🇳 Taiwan
       - 🇩🇪 Germany
       - 🇬🇧 Great Britain
+      - 🇦🇺 Australia
+      - 🇨🇦 Canada
+      - 🇫🇷 French
+      - 🇷🇺 Russia
+      - 🇰🇷 South Korea
   - name: "Apple"
     type: select
     proxies:
@@ -186,6 +227,11 @@ proxy-groups:
       - 🇨🇳 Taiwan
       - 🇩🇪 Germany
       - 🇬🇧 Great Britain
+      - 🇦🇺 Australia
+      - 🇨🇦 Canada
+      - 🇫🇷 French
+      - 🇷🇺 Russia
+      - 🇰🇷 South Korea
   - name: "BiliBili"
     type: select
     proxies:
@@ -202,6 +248,11 @@ proxy-groups:
       - 🇨🇳 Taiwan
       - 🇩🇪 Germany
       - 🇬🇧 Great Britain
+      - 🇦🇺 Australia
+      - 🇨🇦 Canada
+      - 🇫🇷 French
+      - 🇷🇺 Russia
+      - 🇰🇷 South Korea
   - name: "Netflix"
     type: select
     proxies:
@@ -213,6 +264,11 @@ proxy-groups:
       - 🇨🇳 Taiwan
       - 🇩🇪 Germany
       - 🇬🇧 Great Britain
+      - 🇦🇺 Australia
+      - 🇨🇦 Canada
+      - 🇫🇷 French
+      - 🇷🇺 Russia
+      - 🇰🇷 South Korea
   - name: "Steam"
     type: select
     proxies:
@@ -225,6 +281,11 @@ proxy-groups:
       - 🇨🇳 Taiwan
       - 🇩🇪 Germany
       - 🇬🇧 Great Britain
+      - 🇦🇺 Australia
+      - 🇨🇦 Canada
+      - 🇫🇷 French
+      - 🇷🇺 Russia
+      - 🇰🇷 South Korea
   - name: "SteamCN"
     type: select
     proxies:
@@ -237,6 +298,11 @@ proxy-groups:
       - 🇨🇳 Taiwan
       - 🇩🇪 Germany
       - 🇬🇧 Great Britain
+      - 🇦🇺 Australia
+      - 🇨🇦 Canada
+      - 🇫🇷 French
+      - 🇷🇺 Russia
+      - 🇰🇷 South Korea
   - name: "PayPal"
     type: select
     proxies:
@@ -249,6 +315,11 @@ proxy-groups:
       - 🇨🇳 Taiwan
       - 🇩🇪 Germany
       - 🇬🇧 Great Britain
+      - 🇦🇺 Australia
+      - 🇨🇦 Canada
+      - 🇫🇷 French
+      - 🇷🇺 Russia
+      - 🇰🇷 South Korea
   - name: "YouTube"
     type: select
     proxies:
@@ -260,6 +331,12 @@ proxy-groups:
       - 🇨🇳 Taiwan
       - 🇩🇪 Germany
       - 🇬🇧 Great Britain
+      - 🇦🇺 Australia
+      - 🇨🇦 Canada
+      - 🇫🇷 French
+      - 🇷🇺 Russia
+      - 🇰🇷 South Korea
+      - 🇳🇬 Nigeria
   - name: "Google"
     type: select
     proxies:
@@ -271,6 +348,12 @@ proxy-groups:
       - 🇨🇳 Taiwan
       - 🇩🇪 Germany
       - 🇬🇧 Great Britain
+      - 🇦🇺 Australia
+      - 🇨🇦 Canada
+      - 🇫🇷 French
+      - 🇷🇺 Russia
+      - 🇰🇷 South Korea
+      - 🇳🇬 Nigeria
   - name: "Microsoft"
     type: select
     proxies:
@@ -283,6 +366,11 @@ proxy-groups:
       - 🇨🇳 Taiwan
       - 🇩🇪 Germany
       - 🇬🇧 Great Britain
+      - 🇦🇺 Australia
+      - 🇨🇦 Canada
+      - 🇫🇷 French
+      - 🇷🇺 Russia
+      - 🇰🇷 South Korea
   - name: "Telegram"
     type: select
     proxies:
@@ -294,52 +382,107 @@ proxy-groups:
       - 🇨🇳 Taiwan
       - 🇩🇪 Germany
       - 🇬🇧 Great Britain
+      - 🇦🇺 Australia
+      - 🇨🇦 Canada
+      - 🇫🇷 French
+      - 🇷🇺 Russia
+      - 🇰🇷 South Korea
   - name: "🇭🇰 Hong Kong"
     type: select
     filter: '🇭🇰|HK|hk|Hong Kong|HongKong|香港'
     use:
       - provider1
+      - provider2
   - name: "🇸🇬 Singapore"
     type: select
     filter: '新加坡|狮城|🇸🇬|Singapore|singapore|sg|SG'
     use:
       - provider1
+      - provider2
   - name: "🇨🇳 Taiwan"
     type: select
     filter: 'Taiwan|台湾|tw|TW'
     use:
       - provider1
+      - provider2
   - name: "🇩🇪 Germany"
     type: select
-    filter: '🇩🇪|Germany|德国'
+    filter: '🇩🇪|Germany|德国|German'
     use:
       - provider1
+      - provider2
   - name: "🇬🇧 Great Britain"
     type: select
-    filter: '🇬🇧|UK|英国|Great Britain'
+    filter: '🇬🇧|UK|英国|Great Britain|United Kingdom'
     use:
       - provider1
+      - provider2
   - name: "🇯🇵 Japan"
     type: select
     filter: '🇯🇵|日本|Japan'
     use:
       - provider1
+      - provider2
   - name: "🇺🇸 United States"
     type: select
     filter: '🇺🇸|United States|美国'
     use:
       - provider1
+      - provider2
+  - name: "🇦🇺 Australia"
+    type: select
+    filter: '🇦🇺|Australia|澳大利亚'
+    use:
+      - provider1
+      - provider2
+  - name: "🇨🇦 Canada"
+    type: select
+    filter: '🇨🇦|Canada|加拿大'
+    use:
+      - provider1
+      - provider2
+  - name: "🇫🇷 French"
+    type: select
+    filter: '🇫🇷|French|法国'
+    use:
+      - provider1
+      - provider2
+  - name: "🇷🇺 Russia"
+    type: select
+    filter: '🇷🇺|Russia|俄罗斯'
+    use:
+      - provider1
+      - provider2
+  - name: "🇰🇷 South Korea"
+    type: select
+    filter: '🇰🇷|South Korea|Seoul|南韩'
+    use:
+      - provider1
+      - provider2
+  - name: "🇳🇬 Nigeria"
+    type: select
+    filter: '🇳🇬|Nigeria|尼日利亚'
+    use:
+      - provider1
+      - provider2
+      - provider3
 rule-providers:
+  Proxy:
+    type: http
+    behavior: classical
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy_Classical.yaml
+    interval: 86400
+    path: ./ruleset/Proxy.yaml
   Unbreak:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.yaml
     interval: 86400
     path: ./ruleset/Unbreak.yaml
   FanQieAd:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/Clash/filter/FanQieNovel.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/zqzess/rule_for_quantumultX/master/Clash/filter/FanQieNovel.yaml
     interval: 86400
     path: ./ruleset/FanQieAd.yaml
   Advertising:
@@ -351,145 +494,164 @@ rule-providers:
   Privacy:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/EasyPrivacy/EasyPrivacy_Classical.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/EasyPrivacy/EasyPrivacy_Classical.yaml
     interval: 86400
     path: ./ruleset/Privacy.yaml
   Hijacking:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hijacking/Hijacking.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Hijacking/Hijacking.yaml
     interval: 86400
     path: ./ruleset/Hijacking.yaml
   BiliBili:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBili/BiliBili.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/BiliBili/BiliBili.yaml
     interval: 86400
     path: ./ruleset/BiliBili.yaml
   Steam:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Steam/Steam.yaml
     interval: 86400
     path: ./ruleset/Steam.yaml
   SteamCN:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/SteamCN/SteamCN.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/SteamCN/SteamCN.yaml
     interval: 86400
     path: ./ruleset/SteamCN.yaml
   Disney:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Disney/Disney.yaml
     interval: 86400
     path: ./ruleset/Disney.yaml
   Netflix:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix_Classical.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix_Classical.yaml
     interval: 86400
     path: ./ruleset/Netflix.yaml
   YouTube:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.yaml
     interval: 86400
     path: ./ruleset/YouTube.yaml
   Google:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Google/Google.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Google/Google.yaml
     interval: 86400
     path: ./ruleset/Google.yaml
   Telegram:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.yaml
     interval: 86400
     path: ./ruleset/Telegram.yaml
   PayPal:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PayPal/PayPal.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PayPal/PayPal.yaml
     interval: 86400
     path: ./ruleset/PayPal.yaml
   Apple-News:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/main/Rulesets/Clash/Basic/Apple-News.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/main/Rulesets/Clash/Basic/Apple-News.yaml
     interval: 86400
     path: ./ruleset/Apple-News.yaml
   Apple:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/main/Rulesets/Clash/Basic/Apple-proxy.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/main/Rulesets/Clash/Basic/Apple-proxy.yaml
     interval: 86400
     path: ./ruleset/Apple.yaml
   Apple-direct:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/main/Rulesets/Clash/Basic/Apple-direct.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/main/Rulesets/Clash/Basic/Apple-direct.yaml
     interval: 86400
     path: ./ruleset/Apple-direct.yaml
   Microsoft:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml
     interval: 86400
     path: ./ruleset/Microsoft.yaml
   Bahamut:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bahamut/Bahamut.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bahamut/Bahamut.yaml
     interval: 86400
     path: ./ruleset/Bahamut.yaml
   DMM:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/DMM/DMM.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/DMM/DMM.yaml
     interval: 86400
     path: ./ruleset/DMM.yaml
   China:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/China/China_Classical.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/China/China_Classical.yaml
     interval: 86400
     path: ./ruleset/China.yaml
   ChinaIPs:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs_Classical.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs_Classical.yaml
     interval: 86400
     path: ./ruleset/ChinaIPs.yaml
+  OpenAI:
+    type: http
+    behavior: classical
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.yaml
+    interval: 86400
+    path: ./ruleset/OpenAI.yaml
+  Jetbrains:
+    type: http
+    behavior: classical
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Jetbrains/Jetbrains.yaml
+    interval: 86400
+    path: ./ruleset/Jetbrains.yaml
 rules:
-  - IP-CIDR, 10.0.0.0/8, DIRECT
-  - IP-CIDR, 127.0.0.0/8, DIRECT
-  - IP-CIDR, 172.16.0.0/12, DIRECT
-  - IP-CIDR, 192.168.0.0/16, DIRECT
-  - IP-CIDR, 224.0.0.0/24, DIRECT
-  - RULE-SET,Unbreak,DIRECT
-  - RULE-SET,FanQieAd,REJECT
-  - RULE-SET,Advertising,REJECT
-  - RULE-SET,Privacy,REJECT
-  - RULE-SET,Hijacking,REJECT
-  - RULE-SET,BiliBili,BiliBili
-  - RULE-SET,Steam,Steam
-  - RULE-SET,SteamCN,SteamCN
-  - RULE-SET,Disney,Disney 
-  - RULE-SET,Netflix,Netflix
-  - RULE-SET,YouTube,YouTube 
-  - RULE-SET,Google,Google
-  - RULE-SET,Telegram,Telegram
-  - RULE-SET,PayPal,PayPal
-  - RULE-SET,Apple-News,Apple-News
-  - RULE-SET,Apple,Apple
-  - RULE-SET,Apple-direct,DIRECT
-  - RULE-SET,Microsoft,Microsoft
-  - RULE-SET,Bahamut,🇨🇳 Taiwan
-  - RULE-SET,DMM,🇯🇵 Japan
-  - RULE-SET,China,DIRECT
-  - RULE-SET,ChinaIPs,DIRECT
-  - GEOIP,LAN,DIRECT
-  - GEOIP,CN,DIRECT
-  - MATCH,Auto
+- IP-CIDR, 10.0.0.0/8, DIRECT
+- IP-CIDR, 127.0.0.0/8, DIRECT
+- IP-CIDR, 172.16.0.0/12, DIRECT
+- IP-CIDR, 192.168.0.0/16, DIRECT
+- IP-CIDR, 224.0.0.0/24, DIRECT
+- IP-CIDR, 103.151.40.50/32, DIRECT
+- IP-CIDR, 38.59.254.128/32, DIRECT
+- IP-CIDR, 152.70.240.234/32, DIRECT
+- DOMAIN-SUFFIX,syunlee.com, DIRECT
+- DOMAIN-SUFFIX, msftconnecttest.com, DIRECT
+- RULE-SET, Unbreak, DIRECT
+#- RULE-SET, FanQieAd, REJECT
+- RULE-SET, Advertising, REJECT
+- RULE-SET, Privacy, REJECT
+- RULE-SET, Hijacking, REJECT
+- RULE-SET, BiliBili, BiliBili
+- RULE-SET, Steam, Steam
+- RULE-SET, SteamCN, SteamCN
+- RULE-SET, Disney, Disney
+- RULE-SET, Netflix, Netflix
+- RULE-SET, OpenAI, 🇺🇸 United States
+- RULE-SET, Jetbrains, 🇺🇸 United States
+- RULE-SET, YouTube, YouTube
+- RULE-SET, Google, Google
+- RULE-SET, Telegram, Telegram
+- RULE-SET, PayPal, PayPal
+- RULE-SET, Apple-News, Apple-News
+- RULE-SET, Apple, Apple
+- RULE-SET, Apple-direct, DIRECT
+- RULE-SET, Microsoft, Microsoft
+- RULE-SET, Bahamut, 🇨🇳 Taiwan
+- RULE-SET, DMM, 🇯🇵 Japan
+- RULE-SET, China, DIRECT
+- RULE-SET, ChinaIPs, DIRECT
+- GEOIP, LAN, DIRECT
+- GEOIP, CN, DIRECT
+- MATCH, Auto
