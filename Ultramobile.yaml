@@ -1,0 +1,13 @@
+# NAME: Ultramobile
+# AUTHOR: syunlee66
+# REPO: https://github.com/syunlee66/proxy-rule
+# UPDATED: 2024-10-15 19:00:00
+# IP-CIDR: 3
+# DOMAIN-SUFFIX: 2
+# TOTAL: 5
+payload:
+  - IP-CIDR, 66.94.0.0/19
+  - IP-CIDR, 206.29.177.36/32
+  - IP-CIDR, 208.54.0.0/16
+  - DOMAIN-SUFFIX, t-mobile.com
+  - DOMAIN-SUFFIX, pub.3gppnetwork.org
