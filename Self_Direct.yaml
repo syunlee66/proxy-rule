@@ -3,9 +3,9 @@
 # REPO: https://github.com/syunlee66/proxy-rule
 # UPDATED: 2024-10-15 19:00:00
 # IP-CIDR: 3
-# DOMAIN-SUFFIX: 7
+# DOMAIN-SUFFIX: 8
 # DOMAIN: 3
-# TOTAL: 13
+# TOTAL: 14
 payload:
   - IP-CIDR,146.56.171.76/32
   - IP-CIDR,146.56.147.160/32
@@ -17,6 +17,7 @@ payload:
   - DOMAIN-SUFFIX, hdkylin.top
   - DOMAIN-SUFFIX, pttime.online
   - DOMAIN-SUFFIX, pttime.org
+  - DOMAIN-SUFFIX, seagm.com
   - DOMAIN, mirrors.strategyloop.co
   - DOMAIN, api.xmancdn.net
   - DOMAIN, resourcemap.lol
