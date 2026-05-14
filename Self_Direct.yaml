@@ -7,7 +7,7 @@
 # DOMAIN: 3
 # TOTAL: 14
 payload:
-  - IP-CIDR,146.56.171.76/32
+  - IP-CIDR,146.56.158.63/32
   - IP-CIDR,146.56.147.160/32
   - IP-CIDR,8.216.5.9/32
   - DOMAIN-SUFFIX, syunlee.com
