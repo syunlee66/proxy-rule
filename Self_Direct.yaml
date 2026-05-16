@@ -18,6 +18,7 @@ payload:
   - DOMAIN-SUFFIX, pttime.online
   - DOMAIN-SUFFIX, pttime.org
   - DOMAIN-SUFFIX, seagm.com
+  - DOMAIN, train.suuwu.de
   - DOMAIN, mirrors.strategyloop.co
   - DOMAIN, api.xmancdn.net
   - DOMAIN, resourcemap.lol
