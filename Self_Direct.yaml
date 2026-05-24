@@ -24,3 +24,4 @@ payload:
   - DOMAIN, mirrors.strategyloop.co
   - DOMAIN, api.xmancdn.net
   - DOMAIN, resourcemap.lol
+  - DOMAIN-SUFFIX, resend.com
